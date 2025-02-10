@@ -1,5 +1,7 @@
 package android.net;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.net.URL;
 
 public class Uri {
@@ -21,7 +23,7 @@ public class Uri {
   public static Uri  parse(String url){
     try {
       Uri uri1=new Uri();
-      URL u1=new URL(url);
+      URL u1=Urls.create(url, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
 
 
       uri1.host=u1.getHost();
